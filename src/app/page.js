@@ -120,7 +120,7 @@ export default function Home() {
       <Navbar />
 
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-44 h-80 w-80 -translate-x-1/2 rounded-full bg-[#2ea878]/10 blur-3xl" />
+        <div className="absolute left-1/2 top-44 h-80 w-80 -translate-x-1/2 rounded-full bg-[#21adc9]/10 blur-3xl" />
       </div>
 
       <section id="home" className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-24">
@@ -131,12 +131,12 @@ export default function Home() {
             animate="show"
             transition={{ duration: 0.5 }}
           >
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#2ea878]/40 bg-[#2ea878]/10 px-4 py-2 text-xs tracking-wide text-[#bce6d4]">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#21adc9]/40 bg-[#21adc9]/10 px-4 py-2 text-xs tracking-wide text-[#bcecf4]">
               
               KEEP IT SIMPLE
             </div>
 
-            <h1 className="bg-linear-to-r from-white via-[#b7e6d3] to-[#2ea878] bg-clip-text py-2 text-5xl font-black leading-[1.14] text-transparent md:text-7xl">
+            <h1 className="bg-linear-to-r from-white via-[#b7eaf2] to-[#21adc9] bg-clip-text py-2 text-5xl font-black leading-[1.14] text-transparent md:text-7xl">
               Nigam Vaghani
             </h1>
 
@@ -147,14 +147,14 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 rounded-xl bg-[#2ea878] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#37bc86]"
+                className="group inline-flex items-center gap-2 rounded-xl bg-[#21adc9] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2cbfdd]"
               >
                 View My Work
                 <ArrowRight size={16} className="transition group-hover:translate-x-1" />
               </a>
               <a
                 href="#connect"
-                className="rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#2ea878] hover:bg-[#2ea878]/10"
+                className="rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#21adc9] hover:bg-[#21adc9]/10"
               >
                 Let&apos;s Connect
               </a>
@@ -168,7 +168,7 @@ export default function Home() {
             transition={{ duration: 0.55, delay: 0.12 }}
             className="rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-md"
           >
-            <p className="text-xs tracking-[0.22em] text-[#a8d9c5]">DEVELOPER SNAPSHOT</p>
+            <p className="text-xs tracking-[0.22em] text-[#a8e2ec]">DEVELOPER SNAPSHOT</p>
             <div className="mt-5 space-y-4 text-sm text-gray-300">
               <div className="rounded-lg border border-white/10 bg-white/5 p-4">
                 <p className="text-xs text-gray-400">Focus</p>
@@ -187,8 +187,12 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="mx-auto w-full max-w-6xl px-6" aria-hidden="true">
+        <div className="h-px w-full bg-gray-600/50" />
+      </div>
+
       <section id="approach" className="mx-auto w-full max-w-6xl px-6 py-24">
-        <h2 className="bg-linear-to-r from-white to-[#2ea878] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
+        <h2 className="bg-linear-to-r from-white to-[#21adc9] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
           My Approach
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
@@ -205,16 +209,19 @@ export default function Home() {
               transition={{ duration: 0.4, delay: index * 0.08 }}
               className="rounded-2xl border border-white/10 bg-linear-to-b from-white/8 to-white/3 p-6"
             >
-              <p className="text-xs tracking-[0.2em] text-[#9fd8c2]">0{index + 1}</p>
+              <p className="text-xs tracking-[0.2em] text-[#9fe3ef]">0{index + 1}</p>
               <h3 className="mt-3 text-2xl font-semibold text-white">{item.title}</h3>
               <p className="mt-3 leading-relaxed text-gray-300">{item.body}</p>
             </motion.article>
           ))}
         </div>
       </section>
+      <div className="mx-auto w-full max-w-6xl px-6" aria-hidden="true">
+        <div className="h-px w-full bg-gray-600/50" />
+      </div>
 
       <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-24">
-        <h2 className="bg-linear-to-r from-white to-[#2ea878] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
+        <h2 className="bg-linear-to-r from-white to-[#21adc9] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
           Selected Work
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
@@ -229,15 +236,15 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.22 }}
               transition={{ duration: 0.42, delay: index * 0.07 }}
-              className="group rounded-2xl border border-white/10 bg-black/30 p-7 transition hover:border-[#2ea878]/70"
+              className="group rounded-2xl border border-white/10 bg-black/30 p-7 transition hover:border-[#21adc9]/70"
             >
               <div className="mb-4 flex items-center justify-between">
-                <span className="text-xs tracking-[0.2em] text-[#9fd8c2]">PROJECT {String(index + 1).padStart(2, "0")}</span>
+                <span className="text-xs tracking-[0.2em] text-[#9fe3ef]">PROJECT {String(index + 1).padStart(2, "0")}</span>
               </div>
 
               <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
               <p className="mt-3 text-gray-300">{project.summary}</p>
-              <p className="mt-3 text-sm text-[#c7e8da]">{project.impact}</p>
+              <p className="mt-3 text-sm text-[#c7ecf3]">{project.impact}</p>
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {project.stack.map((tag) => (
@@ -254,7 +261,7 @@ export default function Home() {
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 rounded-lg border border-white/20 px-3.5 py-2 text-sm font-medium text-gray-200 transition hover:border-[#2ea878] hover:text-[#bce6d4]"
+                className="mt-6 inline-flex items-center gap-2 rounded-lg border border-white/20 px-3.5 py-2 text-sm font-medium text-gray-200 transition hover:border-[#21adc9] hover:text-[#bcecf4]"
               >
                 <Github size={15} />
                 View Repository
@@ -264,8 +271,12 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="mx-auto w-full max-w-6xl px-6" aria-hidden="true">
+        <div className="h-px w-full bg-gray-600/50" />
+      </div>
+
       <section id="skills" className="mx-auto w-full max-w-6xl px-6 py-24">
-        <h2 className="bg-linear-to-r from-white to-[#2ea878] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
+        <h2 className="bg-linear-to-r from-white to-[#21adc9] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
           Technical Range
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
@@ -280,7 +291,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.26, delay: index * 0.02 }}
-              className="rounded-xl border border-white/12 bg-white/4 px-5 py-3 text-sm font-medium text-gray-100 transition hover:border-[#2ea878]/70 hover:bg-[#2ea878]/10"
+              className="rounded-xl border border-white/12 bg-white/4 px-5 py-3 text-sm font-medium text-gray-100 transition hover:border-[#21adc9]/70 hover:bg-[#21adc9]/10"
             >
               {skill}
             </motion.span>
@@ -288,9 +299,13 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="mx-auto w-full max-w-6xl px-6" aria-hidden="true">
+        <div className="h-px w-full bg-gray-600/50" />
+      </div>
+
       <section id="connect" className="mx-auto w-full max-w-6xl px-6 pb-24 pt-24">
-        <h2 className="bg-linear-to-r from-white to-[#2ea878] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
-          Let&apos;s Connect
+        <h2 className="bg-linear-to-r from-white to-[#21adc9] bg-clip-text py-1 text-center text-4xl font-bold leading-[1.15] text-transparent md:text-5xl">
+          Let&apos;s Connect...
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
           Building something meaningful? Let&apos;s talk.
