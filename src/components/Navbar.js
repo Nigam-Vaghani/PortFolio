@@ -18,8 +18,8 @@ export default function Navbar() {
           Skills
         </a>
 
-        <a href="#contact" className="hover:text-[#268c67] transition">
-          Contact
+        <a href="#connect" className="hover:text-[#268c67] transition">
+          Connect
         </a>
 
       </div>
