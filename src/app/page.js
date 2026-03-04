@@ -4,22 +4,22 @@ import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <main className="relative bg-black text-white text-center overflow-x-hidden">
+    <main className="relative text-white text-center overflow-x-hidden">
       <Navbar />
 
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-6">
-        <div className="absolute w-[600px] h-[600px] bg-[#268c67] opacity-20 blur-[120px] rounded-full"></div>
+        <div className="absolute w-[600px] h-[600px] bg-[#268c67] opacity-20 blur-[120px] rounded-full pointer-events-none"></div>
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl leading-[1.15] py-2 font-bold bg-gradient-to-r from-white via-[#268c67] to-white text-transparent bg-clip-text"
+          className="relative z-10 text-6xl md:text-8xl leading-[1.15] py-2 font-bold bg-gradient-to-r from-white via-[#268c67] to-white text-transparent bg-clip-text"
         >
           Nigam Vaghani
         </motion.h1>
 
-        <p className="mt-6 text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed">
+        <p className="relative z-10 mt-6 text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed">
           Full stack developer building products that matter
         </p>
 
@@ -27,7 +27,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="flex gap-6 mt-10"
+          className="relative z-10 flex gap-6 mt-10"
         >
           <button className="px-7 py-3 bg-[#268c67] rounded-full font-medium hover:scale-110 hover:bg-[#2ea878] transition-all duration-300">
             View Projects
