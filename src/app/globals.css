@@ -1,10 +1,26 @@
 @import "tailwindcss";
 
-body{
+:root {
+  --brand: #2ea878;
+  --brand-soft: #8fd1b5;
+  --ink: #d8e4dd;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   background:
-    radial-gradient(circle at 20% 15%, rgba(38, 140, 103, 0.2) 0%, rgba(38, 140, 103, 0) 35%),
-    radial-gradient(circle at 80% 65%, rgba(38, 140, 103, 0.14) 0%, rgba(38, 140, 103, 0) 40%),
-    linear-gradient(180deg, #020404 0%, #04110c 45%, #020404 100%);
+    radial-gradient(circle at 18% 12%, rgba(46, 168, 120, 0.12) 0%, rgba(46, 168, 120, 0) 32%),
+    radial-gradient(circle at 80% 68%, rgba(46, 168, 120, 0.08) 0%, rgba(46, 168, 120, 0) 40%),
+    linear-gradient(180deg, #020404 0%, #04100c 48%, #020404 100%);
   background-attachment: fixed;
-  color: white;
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(46, 168, 120, 0.35);
+  color: #ecfff6;
 }
