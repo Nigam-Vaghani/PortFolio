@@ -8,10 +8,10 @@ import {
   Linkedin,
   Mail,
   MessageCircle,
-  Sparkles,
-  Twitter,
+  Twitter
 } from "lucide-react";
 import Navbar from "../components/Navbar";
+import FacebookStory from "../components/FacebookStory";
 
 const projects = [
   {
@@ -23,30 +23,33 @@ const projects = [
     repo: "https://github.com/Nigam-Vaghani/gesture-controlled-presentation",
   },
   {
-    title: "AI Route Optimizer",
-    summary:
-      "Intelligent route planner that balances speed, distance, and delivery constraints.",
-    impact: "Improves delivery decisions with algorithmic optimization.",
-    stack: ["ML", "Graph Algorithms", "Optimization"],
-    repo: "https://github.com/Nigam-Vaghani/ai-route-optimizer",
-  },
-  {
-    title: "Codeforces CLI",
-    summary:
-      "Developer CLI for discovering problems, tracking progress, and focused practice.",
-    impact: "Builds consistency for competitive programmers through automation.",
-    stack: ["Python", "CLI", "Automation"],
-    repo: "https://github.com/Nigam-Vaghani/codeforces_cli",
-  },
-  {
-    title: "NovaOS",
-    summary:
-      "Experimental systems project exploring low-level architecture and OS behavior.",
-    impact: "Sharpens systems thinking and deep engineering fundamentals.",
-    stack: ["Systems", "Kernel Concepts", "R&D"],
-    repo: "https://github.com/Nigam-Vaghani/novaos",
-  },
-];
+      title: "AI Route Optimizer",
+      summary:
+        "Intelligent route planner that balances speed, distance, and delivery constraints.",
+      impact: "Improves delivery decisions with algorithmic optimization.",
+      stack: ["ML", "Graph Algorithms", "Optimization"],
+      repo: "https://github.com/Nigam-Vaghani/ai-route-optimizer",
+    },
+    {
+      title: "Codeforces CLI",
+      summary:
+        "Developer CLI for discovering problems, tracking progress, and focused practice.",
+      impact: "Builds consistency for competitive programmers through automation.",
+      stack: ["Python", "CLI", "Automation"],
+      repo: "https://github.com/Nigam-Vaghani/codeforces_cli",
+    },
+    {
+      title: "NovaOS",
+      summary:
+        "Experimental systems project exploring low-level architecture and OS behavior.",
+      impact: "Sharpens systems thinking and deep engineering fundamentals.",
+      stack: ["Systems", "Kernel Concepts", "R&D"],
+      repo: "https://github.com/Nigam-Vaghani/novaos",
+    },
+  ];
+
+ 
+    
 
 const skills = [
   "Python",
@@ -162,28 +165,58 @@ export default function Home() {
           </motion.div>
 
           <motion.aside
-            variants={rise}
-            initial="hidden"
-            animate="show"
-            transition={{ duration: 0.55, delay: 0.12 }}
-            className="rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-md"
-          >
-            <p className="text-xs tracking-[0.22em] text-[#a8e2ec]">DEVELOPER SNAPSHOT</p>
-            <div className="mt-5 space-y-4 text-sm text-gray-300">
-              <div className="rounded-lg border border-white/10 bg-white/5 p-4">
-                <p className="text-xs text-gray-400">Focus</p>
-                <p className="mt-1 text-base text-white">Product engineering + full stack execution</p>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-white/5 p-4">
-                <p className="text-xs text-gray-400">Strength</p>
-                <p className="mt-1 text-base text-white">Turning complex ideas into clean user experiences</p>
-              </div>
-              <div className="rounded-lg border border-white/10 bg-white/5 p-4">
-                <p className="text-xs text-gray-400">Standard</p>
-                <p className="mt-1 text-base text-white">Fast, maintainable, and high signal craftsmanship</p>
-              </div>
-            </div>
-          </motion.aside>
+  variants={rise}
+  initial="hidden"
+  animate="show"
+  transition={{ duration: 0.55, delay: 0.12 }}
+  className="rounded-2xl border border-white/10 bg-black/30 p-6 backdrop-blur-md"
+>
+  <p className="text-xs tracking-[0.22em] text-[#a8e2ec]">So thing is...</p>
+
+  <div className="mt-10">
+
+    {/* DOTS */}
+    <div className="grid grid-cols-4 items-center justify-items-center">
+      <div className="h-2 w-2 rounded-full bg-[#21adc9] shadow-[0_0_10px_#21adc9]" />
+      <div className="h-3 w-3 rounded-full bg-[#21adc9] shadow-[0_0_12px_#21adc9]" />
+      <div className="h-4 w-4 rounded-full bg-[#21adc9] shadow-[0_0_14px_#21adc9]" />
+      <div className="h-6 w-6 rounded-full bg-[#21adc9] shadow-[0_0_20px_#21adc9]" />
+    </div>
+
+    {/* LINE */}
+    <div className="mt-2 h-[2px] w-full bg-[#21adc9]/30"></div>
+
+    {/* LABELS */}
+    <div className="mt-4 grid grid-cols-4 text-center">
+      <div>
+        <p className="text-sm font-semibold text-white">SixDegrees</p>
+        <p className="text-xs text-gray-400">1997</p>
+      </div>
+
+      <div>
+        <p className="text-sm font-semibold text-white">Friendster</p>
+        <p className="text-xs text-gray-400">2002</p>
+      </div>
+
+      <div>
+        <p className="text-sm font-semibold text-white">MySpace</p>
+        <p className="text-xs text-gray-400">2003</p>
+      </div>
+
+      <div>
+        <p className="text-sm font-semibold text-white">Facebook</p>
+        <p className="text-xs text-gray-400">2004</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p className="mt-8 text-sm text-gray-300 leading-relaxed">
+    Great products rarely start as completely new ideas. They evolve
+    each generation learning and improving from the previous one.
+  </p>
+
+</motion.aside>
         </div>
       </section>
 
