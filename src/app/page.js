@@ -15,38 +15,65 @@ import FacebookStory from "../components/FacebookStory";
 
 const projects = [
   {
+    title: "NovaGateway",
+    summary:
+      "Enterprise-grade API Gateway and Reverse Proxy with request analytics, traffic control, caching, and scalable backend routing.",
+    impact:
+      "Demonstrates distributed systems, networking, observability, and production backend architecture.",
+    stack: ["FastAPI", "PostgreSQL", "Redis", "React", "Docker"],
+    repo: "PRIVATE",
+  },
+
+  {
+    title: "EvidenceAI",
+    summary:
+      "RAG-powered AI platform that transforms company knowledge bases into trustworthy AI assistants with semantic search and citation-backed answers.",
+    impact:
+      "Showcases modern LLM engineering, vector search, retrieval systems, and enterprise AI workflows.",
+    stack: ["Python", "RAG", "Embeddings", "Vector Search", "AI"],
+    repo: "https://github.com/Nigam-Vaghani/EvidenceAI",
+  },
+
+  {
+    title: "InvoiceApp",
+    summary:
+      "Professional invoicing and business management platform featuring invoice generation, inventory tracking, and revenue analytics.",
+    impact:
+      "Demonstrates full-stack application development and business workflow automation.",
+    stack: ["Python", "Desktop Application", "SQLite", "Business Systems"],
+    repo: "https://github.com/Nigam-Vaghani/InvoiceApp",
+  },
+
+  {
+    title: "AI Test Automation",
+    summary:
+      "AI-powered testing platform for automating software validation, execution, and quality assurance workflows.",
+    impact:
+      "Reduces manual testing effort through intelligent automation.",
+    stack: ["TypeScript", "AI", "Automation", "Testing"],
+    repo: "https://github.com/Nigam-Vaghani/ai-test-automation",
+  },
+
+  {
+    title: "VendorBridge",
+    summary:
+      "Integration platform connecting external vendor workflows with Odoo ERP systems.",
+    impact:
+      "Demonstrates enterprise integration and business process automation.",
+    stack: ["JavaScript", "Odoo", "ERP", "Integrations"],
+    repo: "https://github.com/Nigam-Vaghani/VendorBridgeOdoo",
+  },
+
+  {
     title: "Gesture Controlled Presentation",
     summary:
       "Real-time hand-tracking system to control slide decks with natural gestures.",
-    impact: "Turns presentations into a touchless, intuitive interaction model.",
+    impact:
+      "Turns presentations into a touchless, intuitive interaction model.",
     stack: ["Python", "OpenCV", "Computer Vision"],
     repo: "https://github.com/Nigam-Vaghani/gesture-controlled-presentation",
   },
-  {
-      title: "AI Route Optimizer",
-      summary:
-        "Intelligent route planner that balances speed, distance, and delivery constraints.",
-      impact: "Improves delivery decisions with algorithmic optimization.",
-      stack: ["ML", "Graph Algorithms", "Optimization"],
-      repo: "https://github.com/Nigam-Vaghani/ai-route-optimizer",
-    },
-    {
-      title: "Codeforces CLI",
-      summary:
-        "Developer CLI for discovering problems, tracking progress, and focused practice.",
-      impact: "Builds consistency for competitive programmers through automation.",
-      stack: ["Python", "CLI", "Automation"],
-      repo: "https://github.com/Nigam-Vaghani/codeforces_cli",
-    },
-    {
-      title: "NovaOS",
-      summary:
-        "Experimental systems project exploring low-level architecture and OS behavior.",
-      impact: "Sharpens systems thinking and deep engineering fundamentals.",
-      stack: ["Systems", "Kernel Concepts", "R&D"],
-      repo: "https://github.com/Nigam-Vaghani/novaos",
-    },
-  ];
+];
 
  
     
