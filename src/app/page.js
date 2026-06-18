@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -17,6 +18,11 @@ import {
   Cpu,
   Globe
 } from "lucide-react";
+import dynamic from 'next/dynamic';
+const GitHubCalendar = dynamic(
+  () => import('react-github-calendar').then((mod) => mod.GitHubCalendar),
+  { ssr: false }
+);
 import Navbar from "../components/Navbar";
 
 // --- Light Theme Mock UI Components for Product Showcases ---
@@ -40,7 +46,7 @@ const NovaGatewayShowcase = () => (
       >
         [NovaGateway] System active. Listening on :8000
       </motion.div>
-      
+
       <div className="space-y-2">
         <motion.div initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="text-gray-600">
           <span className="text-blue-500 font-semibold">INFO</span>: Routing GET /api/v1/users to upstream-1
@@ -55,40 +61,40 @@ const NovaGatewayShowcase = () => (
           <span className="text-amber-500 font-semibold">WARN</span>: Cache miss for key=user_stats_442
         </motion.div>
       </div>
-      
+
       {/* Animated Traffic Diagram */}
       <div className="mt-8 flex items-center justify-between border-t border-gray-100 pt-6 px-4 relative">
         <div className="flex flex-col items-center gap-2 z-10">
           <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-sm"><Globe size={16} className="text-gray-600" /></div>
           <span className="text-[10px] font-medium text-gray-500">Client</span>
         </div>
-        
+
         <div className="flex-1 relative h-px bg-gray-200 mx-3">
-          <motion.div 
-            animate={{ x: ["0%", "100%"] }} 
+          <motion.div
+            animate={{ x: ["0%", "100%"] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
             className="absolute top-1/2 left-0 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"
           />
         </div>
-        
+
         <div className="flex flex-col items-center gap-2 z-10">
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-2 shadow-sm"><Layers size={16} className="text-blue-600" /></div>
           <span className="text-[10px] font-medium text-blue-600">NovaGateway</span>
         </div>
-        
+
         <div className="flex-1 relative h-px bg-gray-200 mx-3">
-           <motion.div 
-            animate={{ x: ["0%", "100%"] }} 
+          <motion.div
+            animate={{ x: ["0%", "100%"] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 0.75 }}
             className="absolute top-1/2 left-0 h-1 w-1 -translate-y-1/2 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.6)]"
           />
         </div>
-        
+
         <div className="flex flex-col items-center gap-2 z-10">
-           <div className="flex gap-1.5">
-             <div className="rounded-lg border border-gray-200 bg-white p-1.5 shadow-sm"><Database size={12} className="text-gray-600" /></div>
-             <div className="rounded-lg border border-gray-200 bg-white p-1.5 shadow-sm"><Database size={12} className="text-gray-600" /></div>
-           </div>
+          <div className="flex gap-1.5">
+            <div className="rounded-lg border border-gray-200 bg-white p-1.5 shadow-sm"><Database size={12} className="text-gray-600" /></div>
+            <div className="rounded-lg border border-gray-200 bg-white p-1.5 shadow-sm"><Database size={12} className="text-gray-600" /></div>
+          </div>
           <span className="text-[10px] font-medium text-gray-500">Backends</span>
         </div>
       </div>
@@ -99,62 +105,62 @@ const NovaGatewayShowcase = () => (
 
 const EvidenceAIShowcase = () => (
   <div className="relative h-full w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-     <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50/50 px-4 py-3">
-        <span className="text-xs font-semibold text-gray-800 flex items-center gap-2"><Zap size={14} className="text-purple-500"/> EvidenceAI</span>
-     </div>
-     <div className="p-5 flex flex-col gap-4 flex-1 text-sm bg-gray-50/30">
-        <div className="self-end rounded-2xl rounded-tr-sm bg-blue-500 px-4 py-3 text-white max-w-[80%] shadow-sm">
-          What is our policy on remote work setup?
+    <div className="flex items-center justify-between border-b border-gray-100 bg-gray-50/50 px-4 py-3">
+      <span className="text-xs font-semibold text-gray-800 flex items-center gap-2"><Zap size={14} className="text-purple-500" /> EvidenceAI</span>
+    </div>
+    <div className="p-5 flex flex-col gap-4 flex-1 text-sm bg-gray-50/30">
+      <div className="self-end rounded-2xl rounded-tr-sm bg-blue-500 px-4 py-3 text-white max-w-[80%] shadow-sm">
+        What is our policy on remote work setup?
+      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+        className="self-start rounded-2xl rounded-tl-sm bg-white px-4 py-3 text-gray-700 max-w-[90%] border border-gray-100 shadow-sm"
+      >
+        <div className="mb-3 leading-relaxed">Based on the Employee Handbook, employees are eligible for a $500 home office stipend to purchase approved equipment <sup className="text-purple-600 font-medium cursor-pointer hover:underline">[1]</sup>.</div>
+        <div className="border-t border-gray-100 pt-3 flex flex-wrap gap-2">
+          <span className="text-[10px] bg-purple-50 px-2 py-1 rounded-md text-purple-700 border border-purple-100 flex items-center gap-1 font-medium transition hover:bg-purple-100 cursor-pointer"><ExternalLink size={10} /> Employee_Handbook_v2.pdf (pg 12)</span>
         </div>
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="self-start rounded-2xl rounded-tl-sm bg-white px-4 py-3 text-gray-700 max-w-[90%] border border-gray-100 shadow-sm"
-        >
-          <div className="mb-3 leading-relaxed">Based on the Employee Handbook, employees are eligible for a $500 home office stipend to purchase approved equipment <sup className="text-purple-600 font-medium cursor-pointer hover:underline">[1]</sup>.</div>
-          <div className="border-t border-gray-100 pt-3 flex flex-wrap gap-2">
-            <span className="text-[10px] bg-purple-50 px-2 py-1 rounded-md text-purple-700 border border-purple-100 flex items-center gap-1 font-medium transition hover:bg-purple-100 cursor-pointer"><ExternalLink size={10}/> Employee_Handbook_v2.pdf (pg 12)</span>
-          </div>
-        </motion.div>
-     </div>
+      </motion.div>
+    </div>
   </div>
 );
 
 const InvoiceAppShowcase = () => (
   <div className="relative h-full w-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
-      <div className="flex items-center gap-3 border-b border-gray-100 bg-gray-50/50 px-4 py-3">
-        <Activity size={14} className="text-emerald-500"/>
-        <span className="text-xs font-semibold text-gray-800">Revenue Dashboard</span>
-     </div>
-     <div className="p-5 grid grid-cols-2 gap-4 flex-1 content-start bg-gray-50/30">
-        <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
-          <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Total Revenue</div>
-          <div className="text-2xl font-bold text-gray-900 mt-2">$45,231.89</div>
-          <div className="text-[11px] text-emerald-600 mt-2 flex items-center gap-1 font-medium">↑ 12.5% vs last month</div>
+    <div className="flex items-center gap-3 border-b border-gray-100 bg-gray-50/50 px-4 py-3">
+      <Activity size={14} className="text-emerald-500" />
+      <span className="text-xs font-semibold text-gray-800">Revenue Dashboard</span>
+    </div>
+    <div className="p-5 grid grid-cols-2 gap-4 flex-1 content-start bg-gray-50/30">
+      <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
+        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Total Revenue</div>
+        <div className="text-2xl font-bold text-gray-900 mt-2">$45,231.89</div>
+        <div className="text-[11px] text-emerald-600 mt-2 flex items-center gap-1 font-medium">↑ 12.5% vs last month</div>
+      </div>
+      <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
+        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Pending Invoices</div>
+        <div className="text-2xl font-bold text-gray-900 mt-2">12</div>
+        <div className="text-[11px] text-amber-600 mt-2 flex items-center gap-1 font-medium">● $4,300 awaiting payment</div>
+      </div>
+      <div className="col-span-2 rounded-xl border border-gray-100 bg-white p-4 mt-2 h-32 relative overflow-hidden flex flex-col justify-end shadow-sm">
+        <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold absolute top-4 left-4">Cash Flow</div>
+        <div className="w-full flex justify-between items-end h-[70%] gap-2 px-1">
+          {[30, 45, 25, 60, 40, 70, 85, 55, 90, 65, 80].map((h, i) => (
+            <motion.div
+              key={i}
+              initial={{ height: 0 }}
+              whileInView={{ height: `${h}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.04, ease: "easeOut" }}
+              className="w-full bg-emerald-400 rounded-t-sm"
+            />
+          ))}
         </div>
-        <div className="rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md">
-          <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold">Pending Invoices</div>
-          <div className="text-2xl font-bold text-gray-900 mt-2">12</div>
-          <div className="text-[11px] text-amber-600 mt-2 flex items-center gap-1 font-medium">● $4,300 awaiting payment</div>
-        </div>
-        <div className="col-span-2 rounded-xl border border-gray-100 bg-white p-4 mt-2 h-32 relative overflow-hidden flex flex-col justify-end shadow-sm">
-           <div className="text-[11px] text-gray-500 uppercase tracking-wider font-semibold absolute top-4 left-4">Cash Flow</div>
-           <div className="w-full flex justify-between items-end h-[70%] gap-2 px-1">
-             {[30, 45, 25, 60, 40, 70, 85, 55, 90, 65, 80].map((h, i) => (
-                <motion.div 
-                  key={i} 
-                  initial={{ height: 0 }} 
-                  whileInView={{ height: `${h}%` }} 
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.04, ease: "easeOut" }}
-                  className="w-full bg-emerald-400 rounded-t-sm" 
-                />
-             ))}
-           </div>
-        </div>
-     </div>
+      </div>
+    </div>
   </div>
 );
 
@@ -302,9 +308,20 @@ const fadeUp = {
 };
 
 export default function Home() {
+  const [contributions, setContributions] = useState("...");
+
+  useEffect(() => {
+    fetch('/api/github')
+      .then(res => res.json())
+      .then(data => {
+        if (data.contributions) setContributions(data.contributions);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <main className="relative min-h-screen bg-[#fdfdfd] font-sans selection:bg-blue-200 selection:text-black overflow-x-hidden">
-      
+
       {/* Soft Light Background Glows */}
       <div className="pointer-events-none fixed inset-0 z-0 flex justify-center">
         <div className="absolute top-[-10%] left-[-10%] h-[50vh] w-[50vw] rounded-full bg-blue-100/50 blur-[120px]" />
@@ -332,18 +349,18 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <Github size={18} className="text-gray-700" />
                   <div className="flex flex-col">
-                    <span className="font-semibold text-gray-900">1.2k+ Contributions</span>
+                    <span className="font-semibold text-gray-900">{contributions} Contributions</span>
                     <span className="text-xs">in the last year</span>
                   </div>
                 </div>
                 <div className="hidden h-8 w-px bg-gray-300 sm:block"></div>
                 <div className="flex gap-3 items-center">
-                   <span className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">Stack</span>
-                   <div className="flex gap-2">
-                     {["Python", "FastAPI", "React", "Docker"].map(tech => (
-                       <span key={tech} className="rounded-md border border-gray-200 bg-white px-2 py-1 text-[11px] font-medium text-gray-700 shadow-sm">{tech}</span>
-                     ))}
-                   </div>
+                  <span className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">Stack</span>
+                  <div className="flex gap-2">
+                    {["Python", "FastAPI", "React", "Docker"].map(tech => (
+                      <span key={tech} className="rounded-md border border-gray-200 bg-white px-2 py-1 text-[11px] font-medium text-gray-700 shadow-sm">{tech}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -359,9 +376,9 @@ export default function Home() {
             </motion.div>
 
             {/* Right Side Hero Showcase */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }} 
-              animate={{ opacity: 1, scale: 1 }} 
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
               className="relative hidden lg:block h-[420px] w-full"
             >
@@ -369,6 +386,32 @@ export default function Home() {
               <NovaGatewayShowcase />
             </motion.div>
           </div>
+        </section>
+
+        {/* --- CODING ACTIVITY SECTION --- */}
+        <section id="activity" className="mx-auto w-full max-w-6xl px-6 py-12 md:py-16">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Coding Activity</h2>
+              <a href="https://github.com/Nigam-Vaghani" target="_blank" rel="noreferrer" className="hidden sm:flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                <Github size={16} /> @Nigam-Vaghani
+              </a>
+            </div>
+            <p className="text-gray-500 text-sm md:text-base mb-8">My coding journey over the past year. <span className="font-semibold text-gray-900">Total: {contributions} contributions</span></p>
+
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-x-auto flex justify-center">
+              <GitHubCalendar
+                username="Nigam-Vaghani"
+                colorScheme="light"
+                fontSize={12}
+                blockSize={12}
+                blockMargin={5}
+                theme={{
+                  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39']
+                }}
+              />
+            </div>
+          </motion.div>
         </section>
 
         {/* --- WHAT I BUILD SECTION --- */}
@@ -382,7 +425,7 @@ export default function Home() {
             {domains.map((domain, i) => {
               const Icon = domain.icon;
               return (
-                <motion.div 
+                <motion.div
                   key={domain.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -413,9 +456,9 @@ export default function Home() {
               const isEven = index % 2 === 0;
               return (
                 <div key={project.title} className={`flex flex-col gap-10 lg:items-center ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                  
+
                   {/* Text Content */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, x: isEven ? -20 : 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -428,7 +471,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 md:text-3xl">{project.title}</h3>
                     <p className="text-base text-gray-600 leading-relaxed">{project.summary}</p>
-                    
+
                     <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 shadow-sm">
                       <h4 className="text-[11px] font-bold uppercase tracking-wider text-gray-500 mb-2">Impact & Architecture</h4>
                       <p className="text-sm text-gray-700 leading-relaxed">{project.impact}</p>
@@ -461,7 +504,7 @@ export default function Home() {
                   </motion.div>
 
                   {/* Visual Showcase */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -488,7 +531,7 @@ export default function Home() {
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:gap-12">
             {skillDomains.map((domain, i) => (
-              <motion.div 
+              <motion.div
                 key={domain.title}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -501,8 +544,8 @@ export default function Home() {
                     // Fallback style if skill color is missing
                     const colorClasses = skillColors[skill] || "bg-gray-100 text-gray-700 border-gray-200";
                     return (
-                      <span 
-                        key={skill} 
+                      <span
+                        key={skill}
                         className={`inline-flex items-center px-3 py-1.5 rounded-lg border text-xs font-semibold shadow-sm transition hover:scale-105 ${colorClasses}`}
                       >
                         {skill}
@@ -517,7 +560,7 @@ export default function Home() {
 
         {/* --- CONNECT SECTION --- */}
         <section id="connect" className="mx-auto w-full max-w-4xl px-6 py-20 md:py-28">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -528,12 +571,12 @@ export default function Home() {
             <p className="mx-auto mt-4 max-w-xl text-gray-500 text-lg">
               I&apos;m currently open to new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
             </p>
-            
+
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
               {contactLinks.map(link => {
                 const Icon = link.icon;
                 return (
-                  <a 
+                  <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
