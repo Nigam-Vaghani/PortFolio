@@ -11,16 +11,14 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 18% 12%, rgba(33, 173, 201, 0.12) 0%, rgba(33, 173, 201, 0) 32%),
-    radial-gradient(circle at 80% 68%, rgba(33, 173, 201, 0.08) 0%, rgba(33, 173, 201, 0) 40%),
-    linear-gradient(180deg, #020405 0%, #041018 48%, #020405 100%);
+  background: #f5f5f7;
   background-attachment: fixed;
-  color: var(--ink);
+  color: #1d1d1f;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: rgba(33, 173, 201, 0.35);
-  color: #ecfbff;
+  background: rgba(0, 125, 250, 0.2);
+  color: #1d1d1f;
 }
