@@ -190,6 +190,57 @@ const AutomationShowcase = () => (
   </div>
 );
 
+const MemeWidgetShowcase = () => (
+  <div className="relative h-full w-full overflow-hidden rounded-xl border border-gray-200 bg-white font-sans shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col">
+    {/* macOS style window header */}
+    <div className="flex items-center gap-2 border-b border-gray-100 bg-gray-50/50 px-4 py-3">
+      <div className="flex gap-1.5">
+        <div className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shadow-sm border border-black/10"></div>
+        <div className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shadow-sm border border-black/10"></div>
+        <div className="h-2.5 w-2.5 rounded-full bg-[#27c93f] shadow-sm border border-black/10"></div>
+      </div>
+      <span className="ml-3 text-[10px] font-medium text-gray-500">truth.exe</span>
+    </div>
+
+    <div className="flex-1 flex flex-col items-center justify-center p-8 relative overflow-hidden bg-gray-50/50">
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="w-full max-w-sm bg-white rounded-xl shadow-md border border-gray-100 p-6 relative z-10"
+      >
+        <div className="absolute -top-5 -right-3 text-5xl">
+          <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 3 }}>
+            🤯
+          </motion.div>
+        </div>
+
+        <p className="text-lg font-medium text-gray-600 mb-6 font-mono border-l-4 border-blue-500 pl-4">
+          I thought programming was about writing code.
+        </p>
+
+        <div className="flex items-center justify-center py-2">
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          >
+            <ArrowRight className="text-gray-300 rotate-90" size={24} />
+          </motion.div>
+        </div>
+
+        <p className="text-2xl font-bold mt-2 font-sans bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 leading-tight">
+          Turns out it's about understanding systems.
+        </p>
+      </motion.div>
+
+      {/* Background decorations */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+      <Code className="absolute top-12 left-12 text-gray-200" size={64} />
+      <Layers className="absolute bottom-12 right-12 text-gray-200" size={64} />
+    </div>
+  </div>
+);
+
 // --- Data ---
 
 const projects = [
@@ -198,7 +249,7 @@ const projects = [
     summary: "Enterprise-grade API Gateway and Reverse Proxy built for modern backend infrastructures.",
     impact: "Manages traffic routing, rate limiting, and observability for distributed services with sub-millisecond latency overhead.",
     stack: ["FastAPI", "PostgreSQL", "Redis", "React", "Docker"],
-    repo: "PRIVATE",
+    repo: "https://github.com/Nigam-Vaghani/NovaGateway",
     demo: "#",
     showcase: <NovaGatewayShowcase />
   },
@@ -320,12 +371,21 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-[#fdfdfd] font-sans selection:bg-blue-200 selection:text-black overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#f8fafc] font-sans selection:bg-blue-200 selection:text-black overflow-x-hidden">
 
-      {/* Soft Light Background Glows */}
+      {/* Dynamic Grid & Glow Background */}
       <div className="pointer-events-none fixed inset-0 z-0 flex justify-center">
-        <div className="absolute top-[-10%] left-[-10%] h-[50vh] w-[50vw] rounded-full bg-blue-100/50 blur-[120px]" />
-        <div className="absolute top-[20%] right-[-10%] h-[40vh] w-[40vw] rounded-full bg-purple-100/40 blur-[100px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.4, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-[-10%] h-[60vh] w-[60vw] rounded-full bg-blue-400/20 blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-[20%] right-[-10%] h-[50vh] w-[50vw] rounded-full bg-purple-400/20 blur-[120px]"
+        />
       </div>
 
       <Navbar />
@@ -334,42 +394,30 @@ export default function Home() {
         {/* --- HERO SECTION --- */}
         <section id="home" className="mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 pt-24 pb-12">
           <div className="grid w-full gap-16 lg:grid-cols-[1.2fr_1fr] items-center">
-            <motion.div variants={fadeUp} initial="hidden" animate="show">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/60 px-3 py-1.5 text-xs font-medium text-gray-600 shadow-sm backdrop-blur-md">
-                <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-                Available for new opportunities
+            <motion.div variants={fadeUp} initial="hidden" animate="show" className="flex flex-col justify-center">
+              <div className="inline-block mb-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/50 px-3 py-1.5 text-xs font-semibold text-blue-700 shadow-sm backdrop-blur-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                  </span>
+                  Open for Opportunities
+                </span>
               </div>
-
-              {/* Reduced font size for elegance */}
-              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl lg:text-6xl leading-[1.15]">
-                Software Engineer building <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">AI systems</span>, developer tools, and backend infrastructure.
+              <h1 className="text-6xl font-extrabold tracking-tight text-slate-900 md:text-7xl lg:text-8xl leading-[1.1]">
+                Nigam <br className="hidden md:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Vaghani</span>
               </h1>
+              <p className="mt-6 text-lg text-slate-600 max-w-lg leading-relaxed">
+                Software Engineer crafting high-performance systems, intelligent integrations, and dynamic user experiences.
+              </p>
 
-              <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center text-sm text-gray-500">
-                <div className="flex items-center gap-3">
-                  <Github size={18} className="text-gray-700" />
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-gray-900">{contributions} Contributions</span>
-                    <span className="text-xs">in the last year</span>
-                  </div>
-                </div>
-                <div className="hidden h-8 w-px bg-gray-300 sm:block"></div>
-                <div className="flex gap-3 items-center">
-                  <span className="text-[11px] font-semibold uppercase tracking-widest text-gray-400">Stack</span>
-                  <div className="flex gap-2">
-                    {["Python", "FastAPI", "React", "Docker"].map(tech => (
-                      <span key={tech} className="rounded-md border border-gray-200 bg-white px-2 py-1 text-[11px] font-medium text-gray-700 shadow-sm">{tech}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 flex gap-4">
-                <a href="#projects" className="group flex h-11 items-center gap-2 rounded-lg bg-gray-900 px-5 text-sm font-medium text-white shadow-[0_4px_14px_rgba(0,0,0,0.15)] transition hover:bg-gray-800 hover:shadow-[0_6px_20px_rgba(0,0,0,0.2)]">
-                  View Products
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a href="#projects" className="group flex h-12 items-center gap-2 rounded-xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5">
+                  View Projects
                   <ArrowRight size={16} className="transition group-hover:translate-x-1" />
                 </a>
-                <a href="#connect" className="flex h-11 items-center rounded-lg border border-gray-200 bg-white px-5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-900">
+                <a href="#connect" className="flex h-12 items-center rounded-xl border-2 border-slate-200 bg-white/50 backdrop-blur-sm px-6 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-slate-300 hover:bg-white hover:text-slate-900">
                   Contact Me
                 </a>
               </div>
@@ -383,12 +431,12 @@ export default function Home() {
               className="relative hidden lg:block h-[420px] w-full"
             >
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-100 to-purple-100 blur-2xl opacity-60"></div>
-              <NovaGatewayShowcase />
+              <MemeWidgetShowcase />
             </motion.div>
           </div>
         </section>
 
-        {/* --- CODING ACTIVITY SECTION --- */}
+        {/* --- CODING ACTIVITY SECTION ---
         <section id="activity" className="mx-auto w-full max-w-6xl px-6 py-12 md:py-16">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
             <div className="flex items-center justify-between mb-2">
@@ -412,7 +460,7 @@ export default function Home() {
               />
             </div>
           </motion.div>
-        </section>
+        </section> */}
 
         {/* --- WHAT I BUILD SECTION --- */}
         <section id="domains" className="mx-auto w-full max-w-6xl px-6 py-20 md:py-28">
@@ -431,13 +479,16 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="group rounded-2xl border border-gray-200 bg-white/60 backdrop-blur-sm p-6 shadow-sm transition-all hover:shadow-md hover:border-gray-300 hover:bg-white"
+                  className="relative group rounded-3xl border border-slate-200/60 bg-white/40 backdrop-blur-xl p-8 shadow-sm transition-all hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 hover:border-blue-200/80 overflow-hidden"
                 >
-                  <div className="mb-4 inline-flex rounded-xl bg-blue-50 p-3 text-blue-600 transition-colors group-hover:bg-blue-100">
-                    <Icon size={22} strokeWidth={1.75} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative z-10">
+                    <div className="mb-6 inline-flex rounded-2xl bg-white p-3.5 text-blue-600 shadow-sm ring-1 ring-slate-100 transition-transform duration-300 group-hover:scale-110 group-hover:text-indigo-600">
+                      <Icon size={24} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="mb-3 text-xl font-bold text-slate-900 tracking-tight">{domain.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-600 font-medium">{domain.description}</p>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-gray-900">{domain.title}</h3>
-                  <p className="text-sm leading-relaxed text-gray-600">{domain.description}</p>
                 </motion.div>
               );
             })}
@@ -565,29 +616,32 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="rounded-3xl border border-gray-200 bg-white p-10 text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] md:p-16"
+            className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/60 backdrop-blur-xl p-10 text-center shadow-xl shadow-slate-200/50 md:p-16"
           >
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">Ready to build something?</h2>
-            <p className="mx-auto mt-4 max-w-xl text-gray-500 text-lg">
-              I&apos;m currently open to new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
-            </p>
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 via-white to-purple-50 opacity-60"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">Ready to build something?</h2>
+              <p className="mx-auto mt-4 max-w-xl text-gray-500 text-lg">
+                I&apos;m currently open to new opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
+              </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-              {contactLinks.map(link => {
-                const Icon = link.icon;
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-gray-50 px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-white hover:text-gray-900 hover:shadow-md"
-                  >
-                    <Icon size={18} />
-                    {link.label}
-                  </a>
-                );
-              })}
+              <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                {contactLinks.map(link => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex items-center justify-center gap-2 rounded-2xl border border-slate-200/80 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:-translate-y-1 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 hover:shadow-md"
+                    >
+                      <Icon size={18} className="text-slate-400 group-hover:text-blue-600 transition-colors" />
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         </section>
