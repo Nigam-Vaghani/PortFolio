@@ -228,7 +228,7 @@ const MemeWidgetShowcase = () => (
           </motion.div>
         </div>
 
-        <p className="text-2xl font-bold mt-2 font-sans bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 leading-tight">
+        <p className="text-2xl font-bold mt-2 font-sans bg-clip-text text-transparent bg-linear-to-r from-purple-600 to-blue-600 leading-tight">
           Turns out it's about understanding systems.
         </p>
       </motion.div>

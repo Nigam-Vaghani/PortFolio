@@ -10,7 +10,8 @@ export default function Navbar() {
         </a>
 
         <div className="hidden items-center gap-8 text-sm font-medium text-gray-500 md:flex">
-          <a href="#home" className="transition hover:text-gray-900">Home</a>
+          <a href="https://github.com/Nigam-Vaghani" className="transition hover:text-gray-900">GitHub</a>
+          {/* <a href="#home" className="transition hover:text-gray-900">Home</a> */}
           <a href="#domains" className="transition hover:text-gray-900">What I Build</a>
           <a href="#projects" className="transition hover:text-gray-900">Products</a>
           <a href="#skills" className="transition hover:text-gray-900">Skills</a>
