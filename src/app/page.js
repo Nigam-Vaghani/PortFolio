@@ -392,7 +392,7 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("vaghaninigam2003@gmail.com");
+    navigator.clipboard.writeText("hello@nigamvaghani.dev");
     setCopied(true);
     setTimeout(() => setCopied(false), 2400);
   };
@@ -445,11 +445,11 @@ export default function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                   </span>
-                  Available for opportunities
+                  Major - COMPUTER SCIENCE
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-white border border-[var(--border)] px-3.5 py-1.5 text-xs font-medium text-[var(--mocha)] shadow-sm">
                   <Coffee size={12} className="text-[var(--caramel)]" />
-                  Fueled by coffee
+                  Minor - ADAPTIVE AI
                 </span>
               </div>
 
@@ -463,20 +463,15 @@ export default function Home() {
                 <span className="gradient-text">Vaghani</span>
               </h1>
 
-              <div className="mt-3 flex items-center gap-3">
-                <div className="h-px flex-1 max-w-[3rem] bg-[var(--latte)]" />
-                <p
-                  className="text-sm font-semibold tracking-[0.2em] uppercase text-[var(--muted)]"
-                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                >
-                  Full-Stack Engineer · Distributed Systems · AI
-                </p>
-              </div>
+              <p
+                className="mt-3 text-sm font-semibold tracking-[0.2em] uppercase text-[var(--muted)]"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                SOFTWARE ENGINEER · BACKEND · AI SYSTEMS
+              </p>
 
               <p className="mt-5 max-w-xl text-base text-[var(--muted)] leading-relaxed">
-                I build high-throughput backend platforms, reliable RAG integrations, and
-                clean software architectures that scale effortlessly — one great cup of
-                coffee at a time.
+                | ... Building things that matter ... |
               </p>
 
               {/* Philosophy card */}
@@ -492,18 +487,18 @@ export default function Home() {
                     <div className="h-2 w-2 rounded-full bg-[var(--latte)]" />
                     <div className="h-2 w-2 rounded-full bg-[var(--latte)]" />
                   </div>
-                  <span className="ml-1 text-[11px] font-mono text-[var(--muted)]">mindset.ts</span>
+                  <span className="ml-1 text-[11px] font-mono text-[var(--muted)]">$ whoami</span>
                   <span className="ml-auto text-xs">☕</span>
                 </div>
                 <div className="p-4 sm:p-5 space-y-3">
                   <p className="text-xs font-mono text-[var(--muted)] border-l-2 border-[var(--latte)] pl-3 leading-relaxed">
-                    I thought programming was about writing code.
+                    Building systems,
                   </p>
                   <div className="pl-3">
                     <ArrowRight size={14} className="rotate-90 text-[var(--caramel)] mb-1" />
                   </div>
                   <p className="text-sm font-bold text-[var(--espresso)] pl-3 leading-snug">
-                    Turns out it's about understanding systems.
+                    not just projects.
                   </p>
                 </div>
               </motion.div>
@@ -563,7 +558,7 @@ export default function Home() {
 
               <div className="relative">
                 {/* Floating badge — top left */}
-                <motion.div
+                {/* <motion.div
                   animate={{ y: [-5, 5, -5] }}
                   transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -top-5 -left-4 z-20 flex items-center gap-2 rounded-xl bg-white border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--espresso)] shadow-[0_4px_16px_rgba(60,30,10,0.1)]"
@@ -573,17 +568,17 @@ export default function Home() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                   </span>
                   Backend & AI Builder
-                </motion.div>
+                </motion.div> */}
 
                 {/* Floating badge — bottom right */}
-                <motion.div
+                {/* <motion.div
                   animate={{ y: [5, -5, 5] }}
                   transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                   className="absolute -bottom-5 -right-3 z-20 flex items-center gap-2 rounded-xl bg-[var(--espresso)] px-3.5 py-2 text-xs font-semibold text-white shadow-[0_4px_16px_rgba(60,30,10,0.25)]"
                 >
                   <Coffee size={12} className="text-[var(--gold)]" />
                   Fueled by Coffee
-                </motion.div>
+                </motion.div> */}
 
                 {/* Decorative outer ring */}
                 <div className="absolute -inset-3 rounded-[2rem] border border-[var(--caramel)]/15 pointer-events-none" />
@@ -610,7 +605,7 @@ export default function Home() {
                   <div className="absolute inset-0 z-10 pointer-events-none rounded-[1.75rem] bg-[var(--caramel)]/5" />
 
                   <img
-                    src="/image.jpg"
+                    src="/hero_image.jpg"
                     alt="A perfectly crafted latte — Nigam's fuel"
                     className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
                   />
@@ -731,8 +726,8 @@ export default function Home() {
                     key={p.id}
                     onClick={() => setActiveProject(idx)}
                     className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${activeProject === idx
-                        ? "bg-white text-[var(--espresso)] shadow-sm border border-[var(--border)]"
-                        : "text-[var(--muted)] hover:text-[var(--espresso)]"
+                      ? "bg-white text-[var(--espresso)] shadow-sm border border-[var(--border)]"
+                      : "text-[var(--muted)] hover:text-[var(--espresso)]"
                       }`}
                   >
                     {String(idx + 1).padStart(2, "0")} {p.title}
@@ -951,7 +946,7 @@ export default function Home() {
                     className="group inline-flex items-center gap-2.5 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[var(--espresso)] shadow-sm transition-all duration-300 hover:bg-[var(--gold)] hover:text-[var(--espresso)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
                   >
                     <Mail size={16} />
-                    vaghaninigam2003@gmail.com
+                    hello@nigamvaghani.dev
                     {copied ? (
                       <span className="flex items-center gap-1 text-xs bg-emerald-500 text-white px-2 py-0.5 rounded-full font-semibold">
                         <Check size={11} /> Copied!
@@ -965,7 +960,7 @@ export default function Home() {
                 {/* Social links */}
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
                   {[
-                    { href: "mailto:vaghaninigam2003@gmail.com", Icon: Mail, label: "Send Email" },
+                    { href: "mailto:hello@nigamvaghani.dev", Icon: Mail, label: "Send Email" },
                     { href: "https://github.com/Nigam-Vaghani", Icon: Github, label: "@Nigam-Vaghani" },
                     { href: "https://www.linkedin.com/in/nigam-vaghani-4a5086260/", Icon: Linkedin, label: "LinkedIn" },
                   ].map(({ href, Icon, label }) => (
