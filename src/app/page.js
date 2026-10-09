@@ -25,6 +25,7 @@ import {
   Sparkles
 } from "lucide-react";
 import Navbar from "../components/Navbar";
+import EmailModal from "../components/EmailModal";
 
 // ─── Animated Counter ─────────────────────────────────────────────────────────
 function Counter({ target, suffix = "" }) {
@@ -390,6 +391,7 @@ const STATS = [
 export default function Home() {
   const [activeProject, setActiveProject] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const copyEmail = () => {
     navigator.clipboard.writeText("hello@nigamvaghani.dev");
@@ -418,7 +420,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-1/3 h-[400px] w-[500px] rounded-full bg-amber-100/20 blur-[100px]" />
       </div>
 
-      <Navbar />
+      <Navbar onOpenEmailModal={() => setIsEmailModalOpen(true)} />
 
       <div className="relative z-10">
 
@@ -517,13 +519,13 @@ export default function Home() {
                   View My Work
                   <ArrowRight size={15} />
                 </a>
-                <a
-                  href="#connect"
-                  className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-white px-6 py-3 text-sm font-semibold text-[var(--espresso)] shadow-sm transition-all duration-300 hover:border-[var(--caramel)]/40 hover:shadow-md hover:-translate-y-0.5"
+                <button
+                  onClick={() => setIsEmailModalOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-white px-6 py-3 text-sm font-semibold text-[var(--espresso)] shadow-sm transition-all duration-300 hover:border-[var(--caramel)]/40 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
                 >
                   <Mail size={14} />
                   Get in Touch
-                </a>
+                </button>
                 {/* Socials */}
                 <div className="flex items-center gap-2 pl-1">
                   {[
@@ -939,41 +941,57 @@ export default function Home() {
                   want to talk distributed systems over a cup of coffee — I'm always available.
                 </p>
 
-                {/* Email button */}
+                {/* Email buttons */}
                 <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
                   <button
-                    onClick={copyEmail}
+                    onClick={() => setIsEmailModalOpen(true)}
                     className="group inline-flex items-center gap-2.5 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[var(--espresso)] shadow-sm transition-all duration-300 hover:bg-[var(--gold)] hover:text-[var(--espresso)] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
                   >
-                    <Mail size={16} />
-                    hello@nigamvaghani.dev
+                    <Mail size={16} className="text-[var(--caramel)] group-hover:text-[var(--espresso)]" />
+                    Send Email (hello@nigamvaghani.dev)
+                    <Sparkles size={14} className="text-[var(--gold)] group-hover:text-[var(--espresso)]" />
+                  </button>
+                  <button
+                    onClick={copyEmail}
+                    title="Copy Email Address"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:bg-white/20 cursor-pointer"
+                  >
                     {copied ? (
-                      <span className="flex items-center gap-1 text-xs bg-emerald-500 text-white px-2 py-0.5 rounded-full font-semibold">
-                        <Check size={11} /> Copied!
+                      <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+                        <Check size={14} /> Copied!
                       </span>
                     ) : (
-                      <Copy size={13} className="text-[var(--muted)] group-hover:text-[var(--espresso)] transition-colors" />
+                      <>
+                        <Copy size={14} /> Copy Address
+                      </>
                     )}
                   </button>
                 </div>
 
                 {/* Social links */}
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
-                  {[
-                    { href: "mailto:hello@nigamvaghani.dev", Icon: Mail, label: "Send Email" },
-                    { href: "https://github.com/Nigam-Vaghani", Icon: Github, label: "@Nigam-Vaghani" },
-                    { href: "https://www.linkedin.com/in/nigam-vaghani-4a5086260/", Icon: Linkedin, label: "LinkedIn" },
-                  ].map(({ href, Icon, label }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={href.startsWith("http") ? "noreferrer" : undefined}
-                      className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/8 px-4 py-2.5 text-xs font-semibold text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white hover:border-white/25"
-                    >
-                      <Icon size={13} /> {label}
-                    </a>
-                  ))}
+                  <button
+                    onClick={() => setIsEmailModalOpen(true)}
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/8 px-4 py-2.5 text-xs font-semibold text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white hover:border-white/25 cursor-pointer"
+                  >
+                    <Mail size={13} /> Send Email
+                  </button>
+                  <a
+                    href="https://github.com/Nigam-Vaghani"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/8 px-4 py-2.5 text-xs font-semibold text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white hover:border-white/25"
+                  >
+                    <Github size={13} /> @Nigam-Vaghani
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/nigam-vaghani-4a5086260/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/8 px-4 py-2.5 text-xs font-semibold text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white hover:border-white/25"
+                  >
+                    <Linkedin size={13} /> LinkedIn
+                  </a>
                 </div>
               </div>
             </div>
@@ -999,6 +1017,12 @@ export default function Home() {
         </footer>
 
       </div>
+
+      {/* Email Popup Modal */}
+      <EmailModal
+        isOpen={isEmailModalOpen}
+        onClose={() => setIsEmailModalOpen(false)}
+      />
     </main>
   );
 }

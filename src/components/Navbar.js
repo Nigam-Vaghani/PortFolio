@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Connect", href: "#connect" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenEmailModal }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,6 +30,16 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleHireClick = (e) => {
+    e.preventDefault();
+    if (onOpenEmailModal) {
+      onOpenEmailModal();
+    } else {
+      const el = document.getElementById("connect");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -104,13 +114,13 @@ export default function Navbar() {
               >
                 GitHub ↗
               </a>
-              <a
-                href="#connect"
-                className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-[var(--espresso)] text-white transition-all duration-300 hover:bg-[var(--mocha)] hover:shadow-[0_4px_16px_rgba(60,30,10,0.2)] hover:-translate-y-0.5"
+              <button
+                onClick={handleHireClick}
+                className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-[var(--espresso)] text-white transition-all duration-300 hover:bg-[var(--mocha)] hover:shadow-[0_4px_16px_rgba(60,30,10,0.2)] hover:-translate-y-0.5 cursor-pointer"
               >
                 <Coffee size={12} className="text-[var(--gold)]" />
                 Hire Me
-              </a>
+              </button>
 
               {/* Mobile toggle */}
               <button
@@ -173,13 +183,15 @@ export default function Navbar() {
             >
               GitHub ↗
             </a>
-            <a
-              href="#connect"
-              onClick={() => setMobileOpen(false)}
-              className="flex-1 text-center py-2.5 text-xs font-semibold rounded-xl bg-[var(--espresso)] text-white"
+            <button
+              onClick={(e) => {
+                setMobileOpen(false);
+                handleHireClick(e);
+              }}
+              className="flex-1 text-center py-2.5 text-xs font-semibold rounded-xl bg-[var(--espresso)] text-white cursor-pointer"
             >
               Hire Me
-            </a>
+            </button>
           </div>
         </div>
       </div>
